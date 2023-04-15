@@ -12,17 +12,18 @@ public class StartGame : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        string temp;
-        int randomIndex;
+        //UNCOMMENT TO SHUFFLE TRIAL LIST
+        //string temp;
+        //int randomIndex;
 
-        //shuffle the list when the game starts
-        for (int i = 4; i < trials.Count; i++)
-        {
-            temp = trials[i];
-            randomIndex = Random.Range(i, trials.Count);
-            trials[i] = trials[randomIndex];
-            trials[randomIndex] = temp;
-        }
+        ////shuffle the list when the game starts
+        //for (int i = 4; i < trials.Count; i++)
+        //{
+        //    temp = trials[i];
+        //    randomIndex = Random.Range(i, trials.Count);
+        //    trials[i] = trials[randomIndex];
+        //    trials[randomIndex] = temp;
+        //}
 
         GlobalControl.Instance.trials = trials; //set a global list of trials we can use in all of the scenes
     
