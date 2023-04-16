@@ -1465,6 +1465,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 3be870bd3141f9741b70abdfb4242cb6, type: 3}
   m_PrefabInstance: {fileID: 322000247}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &339617479 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8616685848737228372, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
+  m_PrefabInstance: {fileID: 841245562}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &340558331
 GameObject:
   m_ObjectHideFlags: 0
@@ -4317,7 +4322,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5420857361349278248, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
   m_PrefabInstance: {fileID: 841245562}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 339617479}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e087ecce43ebbff45a1b360637807d93, type: 3}
@@ -4338,6 +4343,47 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5393215578589016641, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
   m_PrefabInstance: {fileID: 841245562}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &841245571
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 339617479}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a73eb35823d688d4799873bdcc5568c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  metric_name: Time
+  datatosend:
+    m_EditingCustomValue: 0
+    m_PopupIndex: 0
+    m_CustomValue: 
+    m_FixedType: 0
+    m_EnumType: 
+    m_EnumTypeIsCustomizable: 1
+    m_CanDisable: 0
+    m_PropertyType: 2
+    m_ValueType: System.String
+    m_Value: 0
+    m_Target:
+      m_Target: {fileID: 8616685848737228372, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
+      m_Path: 
+      m_ValidTypeNames:
+      - System.Int32
+      - System.Boolean
+      - System.Decimal
+      - System.Double
+      - System.Single
+      - System.Int64
+      - System.Int16
+      - System.String
+      - enum
+      m_Type: System.String
+      m_EnumType: 
+  trigger:
+    triggerEvent: 2
 --- !u!1 &850179730
 GameObject:
   m_ObjectHideFlags: 0
