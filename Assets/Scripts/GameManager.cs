@@ -4,24 +4,35 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
+using System.Diagnostics;
 
 public class GameManager : MonoBehaviour
 {
+    //TRIAL, SCENE & PROLIFIC
     public int trialNum;
     public string trialName;
     public List<string> trials;
-
     string prolificID;
-
     private string sceneName;
 
+    //TRIAL TIMER
     public float trialTimer = 0;
     private bool timerIsActive = true;
 
+    //TO COUNT GEMS
     public static int gemsCollected = 0;
     public TextMeshProUGUI gemCount;
     private int gemGoal_Lobby = 5;
     private int gemGoal_Trial = 15;
+
+    //FOR HEAT MAP
+    public string[] positions = new string[1000];
+    string heatMapData;
+    int posIndex = 0;
+    Stopwatch watchPos = new();
+    float currTime = 0f, prevTime = 0f;
+    float period = 0.250f;
+    public Transform player;   
 
     public int inFullScreen;
 
@@ -37,6 +48,9 @@ public class GameManager : MonoBehaviour
         trialName = GlobalControl.Instance.trialName;
         trials = GlobalControl.Instance.trials;
         prolificID = SaveProlificID.prolificID;
+
+        //player = GameObject.Find("PlayerCapsule").GetComponent<Transform>();
+        UnityEngine.Debug.Log(player);
     }
 
     // Update is called once per frame
@@ -44,20 +58,30 @@ public class GameManager : MonoBehaviour
     {
         if (timerIsActive)
         {
+            
             trialTimer += Time.deltaTime;
+            currTime = trialTimer;
+
+            if (currTime - prevTime >= period) {
+                
+                prevTime = currTime;
+                positions[posIndex] = player.position.ToString();
+                //UnityEngine.Debug.Log(positions[posIndex]);
+                posIndex++;
+            }
         }
 
         if (Screen.fullScreen == false)
         {
             inFullScreen = 0;
         }
+
     }
 
     public void updateGemCount()
     {
         gemsCollected++;
         gemCount.text = "GEMS COLLECTED: " + gemsCollected.ToString() + "/5";
-        Debug.Log(gemsCollected);
         ResetRound();
     }
 
@@ -82,6 +106,8 @@ public class GameManager : MonoBehaviour
             //Tinylytics.AnalyticsManager.LogCustomMetric(SaveProlificID.prolificID + "_" + tempTrialName + "_" + tempTrialNum.ToString() + "_" + "PacdotsCollected", score.ToString());
 
             //3. Heat Map
+            heatMapData = string.Join("_", positions);
+            UnityEngine.Debug.Log(heatMapData);
 
             //5. ExitedFullScreen?
             //Tinylytics.AnalyticsManager.LogCustomMetric(SaveProlificID.prolificID + "_" + tempTrialName + "_" + tempTrialNum.ToString() + "_" + "InFullScreen", inFullScreen.ToString());
@@ -90,8 +116,8 @@ public class GameManager : MonoBehaviour
             //Tinylytics.AnalyticsManager.LogCustomMetric(SaveProlificID.prolificID + "_" + trialName + "_" + tempTrialNum.ToString() + "_" + "TrialEndTime", "End " + System.DateTime.Now);
 
             //Debug.Log(blinkyDists);
-            Debug.Log("Round Over!");
-            Debug.Log("Time Taken: " + trialTimer);
+            UnityEngine.Debug.Log("Round Over!");
+            UnityEngine.Debug.Log("Time Taken: " + trialTimer);
             SaveGame();
             newTrial();
 
