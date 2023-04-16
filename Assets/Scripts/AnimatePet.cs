@@ -67,6 +67,7 @@ public class AnimatePet : MonoBehaviour
         }
 
 
+        //BOBBING ANIMATION
         if (transform.localPosition.y >= 0.24f) up = false;
         else if (transform.localPosition.y <= 0.22f) up = true;
 
