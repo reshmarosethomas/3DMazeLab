@@ -11,6 +11,7 @@ public class Interstitial : MonoBehaviour
     public List<string> trials;
 
     public TextMeshProUGUI message;
+    public TextMeshProUGUI heading;
 
     // Start is called before the first frame update
     void Start()
@@ -41,7 +42,9 @@ public class Interstitial : MonoBehaviour
     void MessagePlayer()
     {
         int _trialNumberForHumans = trialNum + 1; //lol this is because trialNum starts at 0 (as do all array values) but people don't start counting with zero...mostly...
-        message.text = "Round " + _trialNumberForHumans + "/14";
+        message.text = "Round " + _trialNumberForHumans + "/3";
+
+        //NEED TO CODE z
     }
 
     void newTrial()

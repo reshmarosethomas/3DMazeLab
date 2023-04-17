@@ -17,7 +17,7 @@ public class StartGame : MonoBehaviour
         //int randomIndex;
 
         ////shuffle the list when the game starts
-        //for (int i = 4; i < trials.Count; i++)
+        //for (int i = 1; i < trials.Count; i++)
         //{
         //    temp = trials[i];
         //    randomIndex = Random.Range(i, trials.Count);
@@ -45,6 +45,7 @@ public class StartGame : MonoBehaviour
         trialName = GlobalControl.Instance.trials[trialNum];
 
         int actualTrialNum = trialNum + 1;
+
         //Tinylytics.AnalyticsManager.LogCustomMetric(SaveProlificID.prolificID + "_" + trialName + "_" + actualTrialNum.ToString() + "_" + "TrialStartTime", "Start " + System.DateTime.Now);
 
         SceneManager.LoadScene(trialName);

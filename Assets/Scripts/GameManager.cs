@@ -29,7 +29,6 @@ public class GameManager : MonoBehaviour
     public string[] positions = new string[1000];
     string heatMapData;
     int posIndex = 0;
-    Stopwatch watchPos = new();
     float currTime = 0f, prevTime = 0f;
     float period = 0.250f;
     public Transform player;   
@@ -45,12 +44,17 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         trialNum = GlobalControl.Instance.trialNum;
-        trialName = GlobalControl.Instance.trialName;
+        trialName = GlobalControl.Instance.trials[trialNum];
         trials = GlobalControl.Instance.trials;
+
         prolificID = SaveProlificID.prolificID;
 
+        UnityEngine.Debug.Log("ProlificID:" + prolificID);
+        UnityEngine.Debug.Log("Trial Name:" + trialName);
+        UnityEngine.Debug.Log("Trial Number:" + trialNum.ToString());
+
         //player = GameObject.Find("PlayerCapsule").GetComponent<Transform>();
-        UnityEngine.Debug.Log(player);
+        gemsCollected = 0;
     }
 
     // Update is called once per frame
@@ -58,12 +62,10 @@ public class GameManager : MonoBehaviour
     {
         if (timerIsActive)
         {
-            
             trialTimer += Time.deltaTime;
             currTime = trialTimer;
 
             if (currTime - prevTime >= period) {
-                
                 prevTime = currTime;
                 positions[posIndex] = player.position.ToString();
                 //UnityEngine.Debug.Log(positions[posIndex]);
@@ -81,16 +83,25 @@ public class GameManager : MonoBehaviour
     public void updateGemCount()
     {
         gemsCollected++;
-        gemCount.text = "GEMS COLLECTED: " + gemsCollected.ToString() + "/5";
+        if (trialNum == 0)
+        {
+            gemCount.text = "GEMS COLLECTED: " + gemsCollected.ToString() + "/5";
+
+        } else
+        {
+            gemCount.text = "GEMS COLLECTED: " + gemsCollected.ToString() + "/15";
+        }
+        
         ResetRound();
     }
 
     public void ResetRound()
     {
         
-        if ((gemsCollected >= gemGoal_Lobby && trialName == "Lobby") || (gemsCollected >= gemGoal_Trial && trialName != "Lobby"))
+        UnityEngine.Debug.Log("Trial Name:" + trialNum);
+        if ((gemsCollected >= gemGoal_Lobby && trialNum == 0) || (gemsCollected >= gemGoal_Trial && trialNum > 0))
         {
-
+            UnityEngine.Debug.Log("Reset Round If Statement");
             trialNum++;
 
             int tempTrialNum = trialNum; //so that tinylytics doesn't mess with trialNum
@@ -99,18 +110,18 @@ public class GameManager : MonoBehaviour
             //Log all Tinylytics at Round End
 
             //1. Time Taken for Round
-            //timeTaken = Timer.currentTime;
-            //Tinylytics.AnalyticsManager.LogCustomMetric(prolificID + "_" + tempTrialName + "_" + tempTrialNum.ToString() + "_" + "TimeTaken", timeTaken.ToString());
+            Tinylytics.AnalyticsManager.LogCustomMetric(prolificID + "_" + tempTrialName + "_" + tempTrialNum.ToString() + "_" + "TimeTaken", trialTimer.ToString());
 
             //2. Log Score
-            //Tinylytics.AnalyticsManager.LogCustomMetric(SaveProlificID.prolificID + "_" + tempTrialName + "_" + tempTrialNum.ToString() + "_" + "PacdotsCollected", score.ToString());
+            Tinylytics.AnalyticsManager.LogCustomMetric(SaveProlificID.prolificID + "_" + tempTrialName + "_" + tempTrialNum.ToString() + "_" + "GemsCollected", gemsCollected.ToString());
 
             //3. Heat Map
             heatMapData = string.Join("_", positions);
             UnityEngine.Debug.Log(heatMapData);
+            Tinylytics.AnalyticsManager.LogCustomMetric(SaveProlificID.prolificID + "_" + tempTrialName + "_" + tempTrialNum.ToString() + "_" + "PlayerHeatMap", heatMapData);
 
             //5. ExitedFullScreen?
-            //Tinylytics.AnalyticsManager.LogCustomMetric(SaveProlificID.prolificID + "_" + tempTrialName + "_" + tempTrialNum.ToString() + "_" + "InFullScreen", inFullScreen.ToString());
+            Tinylytics.AnalyticsManager.LogCustomMetric(SaveProlificID.prolificID + "_" + tempTrialName + "_" + tempTrialNum.ToString() + "_" + "InFullScreen", inFullScreen.ToString());
 
             //6.Log Trial End
             //Tinylytics.AnalyticsManager.LogCustomMetric(SaveProlificID.prolificID + "_" + trialName + "_" + tempTrialNum.ToString() + "_" + "TrialEndTime", "End " + System.DateTime.Now);
@@ -137,10 +148,11 @@ public class GameManager : MonoBehaviour
     void newTrial()
     {
         if (trialNum < trials.Count)
-        {
+        {   
             trialName = trials[trialNum];
+            
             SaveGame();
-            sceneName = "Interstitial"; //this name is used in the Coroutine, which is basically just a pause timer for 3 seconds.
+            sceneName = "InterstitialA"; //this name is used in the Coroutine, which is basically just a pause timer for 3 seconds.
             StartCoroutine(WaitForSceneLoad());
         }
         else

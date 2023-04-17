@@ -13,11 +13,9 @@ public class SaveProlificID : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log("InStart");
         _inputField = GameObject.Find("ProlificIDInput").GetComponent<TMP_InputField>();
 
     }
-
 
     public void InputName()
     {
@@ -28,10 +26,11 @@ public class SaveProlificID : MonoBehaviour
     void Update()
     {
         prolificID = _inputField.text;
+
         if (Input.GetKeyDown(KeyCode.Return))
         {
-            Debug.Log(prolificID);
-            Tinylytics.AnalyticsManager.LogCustomMetric("Prolific ID", prolificID);
+            Debug.Log("InProlificID: "+prolificID);
+            Tinylytics.AnalyticsManager.LogCustomMetric("ProlificID", prolificID);
             Screen.fullScreen = true;
             Start_Opening();
         }
