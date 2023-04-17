@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour
     private int gemGoal_Trial = 15;
 
     //FOR HEAT MAP
-    public string[] positions = new string[1000];
+    public string[] positions = new string[2000];
     string heatMapData;
     int posIndex = 0;
     float currTime = 0f, prevTime = 0f;
