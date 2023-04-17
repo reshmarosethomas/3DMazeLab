@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.17861696, g: 0.22365324, b: 0.3056033, a: 1}
+  m_IndirectSpecularColor: {r: 0.1786849, g: 0.22372568, b: 0.30570596, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3724,6 +3724,36 @@ PrefabInstance:
     - target: {fileID: 4145531737503501521, guid: a2e93911055704986b4ee26a064fde84, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4145531737651499462, guid: a2e93911055704986b4ee26a064fde84, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4145531737935914968, guid: a2e93911055704986b4ee26a064fde84, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -261
+      objectReference: {fileID: 0}
+    - target: {fileID: 4145531737935914968, guid: a2e93911055704986b4ee26a064fde84, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 165
+      objectReference: {fileID: 0}
+    - target: {fileID: 4145531737935914969, guid: a2e93911055704986b4ee26a064fde84, type: 3}
+      propertyPath: m_text
+      value: 'Gems Collected: 0/12'
+      objectReference: {fileID: 0}
+    - target: {fileID: 4145531737935914969, guid: a2e93911055704986b4ee26a064fde84, type: 3}
+      propertyPath: m_margin.z
+      value: -228.52487
+      objectReference: {fileID: 0}
+    - target: {fileID: 5565920502730645991, guid: a2e93911055704986b4ee26a064fde84, type: 3}
+      propertyPath: m_text
+      value: 'Arrows to Move
+
+        Mouse / Trackpad to Look Around'
+      objectReference: {fileID: 0}
+    - target: {fileID: 5565920502730645991, guid: a2e93911055704986b4ee26a064fde84, type: 3}
+      propertyPath: m_fontStyle
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a2e93911055704986b4ee26a064fde84, type: 3}
