@@ -85,6 +85,7 @@ public class GameManager : MonoBehaviour
 
     }
 
+    
     public void updateGemCount()
     {
         gemsCollected++;
