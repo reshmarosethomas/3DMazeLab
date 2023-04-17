@@ -41,10 +41,17 @@ public class Interstitial : MonoBehaviour
 
     void MessagePlayer()
     {
-        int _trialNumberForHumans = trialNum + 1; //lol this is because trialNum starts at 0 (as do all array values) but people don't start counting with zero...mostly...
+        int _trialNumberForHumans = trialNum; //lol this is because trialNum starts at 0 (as do all array values) but people don't start counting with zero...mostly...
         message.text = "Round " + _trialNumberForHumans + "/3";
 
-        //NEED TO CODE z
+        if (trialNum == 0)
+        {
+            heading.text = "You've completed Practice!";
+        }
+        else
+        {
+            heading.text = "Ready for the next round?";
+        }
     }
 
     void newTrial()
