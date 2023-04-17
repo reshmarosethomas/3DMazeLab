@@ -18,15 +18,16 @@ public class GameManager : MonoBehaviour
     //TRIAL TIMER
     public float trialTimer = 0;
     private bool timerIsActive = true;
+    public TextMeshProUGUI timeLeft;
 
     //TO COUNT GEMS
     public static int gemsCollected = 0;
     public TextMeshProUGUI gemCount;
     private int gemGoal_Lobby = 5;
-    private int gemGoal_Trial = 15;
+    private int gemGoal_Trial = 14;
 
     //FOR HEAT MAP
-    public string[] positions = new string[1000];
+    public string[] positions = new string[2000];
     string heatMapData;
     int posIndex = 0;
     float currTime = 0f, prevTime = 0f;
@@ -68,10 +69,14 @@ public class GameManager : MonoBehaviour
             if (currTime - prevTime >= period) {
                 prevTime = currTime;
                 positions[posIndex] = player.position.ToString();
-                //UnityEngine.Debug.Log(positions[posIndex]);
                 posIndex++;
             }
+
         }
+
+        float seconds = Mathf.Floor(trialTimer);
+        float milliseconds = Mathf.Floor((trialTimer - seconds)*100);
+        timeLeft.text = "TIME: " + seconds.ToString() + ":" + milliseconds.ToString();
 
         if (Screen.fullScreen == false)
         {
@@ -85,11 +90,11 @@ public class GameManager : MonoBehaviour
         gemsCollected++;
         if (trialNum == 0)
         {
-            gemCount.text = "GEMS COLLECTED: " + gemsCollected.ToString() + "/5";
+            gemCount.text = "GEMS COLLECTED: " + gemsCollected.ToString() + "/" + gemGoal_Lobby.ToString();
 
         } else
         {
-            gemCount.text = "GEMS COLLECTED: " + gemsCollected.ToString() + "/15";
+            gemCount.text = "GEMS COLLECTED: " + gemsCollected.ToString() + "/" + gemGoal_Trial.ToString();
         }
         
         ResetRound();
