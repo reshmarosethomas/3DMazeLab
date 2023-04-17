@@ -650,7 +650,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "* FIND the hidden GEMS as FAST as possible \r\n* Use your trackpad or
-    mouse to LOOK around &\r\n  Use the Up/Down arrows or WASD keys to MOVE \r\n"
+    mouse to LOOK around &\r\n  Use the Up/Down arrows or WASD keys to MOVE \n  Use
+    the space bar to jump\r\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
