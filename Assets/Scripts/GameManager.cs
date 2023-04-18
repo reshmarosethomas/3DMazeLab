@@ -75,8 +75,10 @@ public class GameManager : MonoBehaviour
         }
 
         float seconds = Mathf.Floor(trialTimer);
+        float minutes = Mathf.Floor(seconds/60);   
         float milliseconds = Mathf.Floor((trialTimer - seconds)*100);
-        timeLeft.text = "TIME: " + seconds.ToString() + ":" + milliseconds.ToString();
+            seconds = seconds%60; 
+        timeLeft.text = "TIME: " + minutes.ToString() + ":" + seconds.ToString() + ":" + milliseconds.ToString();
 
         if (Screen.fullScreen == false)
         {
