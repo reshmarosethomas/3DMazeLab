@@ -44,7 +44,7 @@ public class Interstitial : MonoBehaviour
         int _trialNumberForHumans = trialNum; //lol this is because trialNum starts at 0 (as do all array values) but people don't start counting with zero...mostly...
         message.text = "Round " + _trialNumberForHumans + "/3";
 
-        if (trialNum == 0)
+        if (trialNum == 1)
         {
             heading.text = "You've completed Practice!";
         }
