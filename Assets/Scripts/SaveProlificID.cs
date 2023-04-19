@@ -29,7 +29,7 @@ public class SaveProlificID : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Return))
         {
-            Debug.Log("InProlificID: "+prolificID);
+            Debug.Log("InProlificID: " + prolificID);
             Tinylytics.AnalyticsManager.LogCustomMetric("ProlificID", prolificID);
             Screen.fullScreen = true;
             Start_Opening();
