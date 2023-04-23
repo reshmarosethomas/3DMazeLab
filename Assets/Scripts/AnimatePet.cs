@@ -27,8 +27,6 @@ public class AnimatePet : MonoBehaviour
     Vector3 originalPos;
 
     float distFromPlayer = 0f;
-    float maxDistFromPlayer = 2.0f;
-    float minDistFromPlayer = 1.54f;
     float walkRate = 0.5f;
    
     // Start is called before the first frame update
@@ -97,7 +95,6 @@ public class AnimatePet : MonoBehaviour
             
             
             //TURN AROUND
-            
             if ((transform.localEulerAngles.y < 140 || transform.localEulerAngles.y > 150) && distFromPlayer < 1.0f)
             transform.Rotate(new Vector3(0, degreesPerSecond, 0) * Time.deltaTime);
 
