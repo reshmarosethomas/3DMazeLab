@@ -129,7 +129,10 @@ public class GameManager : MonoBehaviour
             //1. Time Taken for Round
             Tinylytics.AnalyticsManager.LogCustomMetric(prolificID + "_" + tempTrialName + "_" + tempTrialNum.ToString() + "_" + "TimeTaken", trialTimer.ToString());
             lastTimeTaken = trialTimer;
-            if (lastTimeTaken <= bestTimeTaken) bestTimeTaken = lastTimeTaken;
+            if (trialNum > 1) {
+                if (lastTimeTaken <= bestTimeTaken) bestTimeTaken = lastTimeTaken;
+            }
+            
 
             //2. Log Score
             Tinylytics.AnalyticsManager.LogCustomMetric(SaveProlificID.prolificID + "_" + tempTrialName + "_" + tempTrialNum.ToString() + "_" + "GemsCollected", gemsCollected.ToString());

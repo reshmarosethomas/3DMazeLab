@@ -71,17 +71,15 @@ public class Interstitial : MonoBehaviour
         if (trialNum <= 1)
         {
             heading.text = "You've completed Practice! Ready to play?";
-            lastTime.text = "Time Taken: " + minutes1.ToString() + ":" + seconds1.ToString() + ":" + milliseconds1.ToString();
+            lastTime.text = "Time Taken: " + minutes1.ToString() + "m :" + seconds1.ToString() + "s :" + milliseconds1.ToString() + "ms";
             bestTime.text = "";
-
         }
 
         else 
         {
             heading.text = "Can you beat your best score?";
-            lastTime.text = "Time Taken: " + minutes1.ToString() + ":" + seconds1.ToString() + ":" + milliseconds1.ToString();
-            bestTime.text = "Best Time: " + minutes2.ToString() + ":" + seconds2.ToString() + ":" + milliseconds2.ToString();
-
+            lastTime.text = "Time Taken: " + minutes1.ToString() + "m :" + seconds1.ToString() + "s :" + milliseconds1.ToString() + "ms";
+            bestTime.text = "Best Time: " + minutes2.ToString() + "m :" + seconds2.ToString() + "s :" + milliseconds2.ToString() + "ms";
         }
         
     }
