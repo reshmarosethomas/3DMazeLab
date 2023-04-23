@@ -62,6 +62,7 @@ public class Interstitial : MonoBehaviour
             lastTime.text = "Time Taken: " + lastTimeTaken.ToString();
             bestTime.text = "";
         }
+        
         else 
         {
             heading.text = "Can you beat your best score?";
