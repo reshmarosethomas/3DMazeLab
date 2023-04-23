@@ -24,9 +24,6 @@ public class AnimatePet : MonoBehaviour
     bool up = true;
     float bobRate = 0.00006f;
 
-    float petLocalYPos = 0f;
-    float petLocalXPos = 0f;
-    float petLocalZPos = 0f;
     Vector3 originalPos;
 
     float distFromPlayer = 0f;
@@ -44,9 +41,6 @@ public class AnimatePet : MonoBehaviour
         prevPlayerPos = currPlayerPos;
 
         //Store the original pet position wrt the player capsule
-        petLocalYPos = transform.localPosition.y;
-        petLocalZPos = transform.localPosition.z;
-        petLocalXPos = transform.localPosition.x;
         originalPos = transform.localPosition;
     }
 
