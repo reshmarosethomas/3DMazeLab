@@ -12,6 +12,9 @@ public class GameManager : MonoBehaviour
     public int trialNum;
     public string trialName;
     public List<string> trials;
+    public float lastTimeTaken;
+    public float bestTimeTaken;
+
     string prolificID;
     private string sceneName;
 
@@ -49,6 +52,8 @@ public class GameManager : MonoBehaviour
         trialNum = GlobalControl.Instance.trialNum;
         trialName = GlobalControl.Instance.trials[trialNum];
         trials = GlobalControl.Instance.trials;
+        lastTimeTaken = GlobalControl.Instance.lastTimeTaken;
+        bestTimeTaken = GlobalControl.Instance.bestTimeTaken;
 
         prolificID = SaveProlificID.prolificID;
 
@@ -123,20 +128,21 @@ public class GameManager : MonoBehaviour
 
             //1. Time Taken for Round
             Tinylytics.AnalyticsManager.LogCustomMetric(prolificID + "_" + tempTrialName + "_" + tempTrialNum.ToString() + "_" + "TimeTaken", trialTimer.ToString());
+            lastTimeTaken = trialTimer;
+            if (lastTimeTaken <= bestTimeTaken) bestTimeTaken = lastTimeTaken;
 
             //2. Log Score
             Tinylytics.AnalyticsManager.LogCustomMetric(SaveProlificID.prolificID + "_" + tempTrialName + "_" + tempTrialNum.ToString() + "_" + "GemsCollected", gemsCollected.ToString());
 
             //3. Heat Map
             heatMapData = string.Join("_", positions);
-            UnityEngine.Debug.Log(heatMapData);
             Tinylytics.AnalyticsManager.LogCustomMetric(SaveProlificID.prolificID + "_" + tempTrialName + "_" + tempTrialNum.ToString() + "_" + "PlayerHeatMap", heatMapData);
 
             //5. ExitedFullScreen?
             Tinylytics.AnalyticsManager.LogCustomMetric(SaveProlificID.prolificID + "_" + tempTrialName + "_" + tempTrialNum.ToString() + "_" + "InFullScreen", inFullScreen.ToString());
 
-            //6.Log Trial End
-            //Tinylytics.AnalyticsManager.LogCustomMetric(SaveProlificID.prolificID + "_" + trialName + "_" + tempTrialNum.ToString() + "_" + "TrialEndTime", "End " + System.DateTime.Now);
+            //6. Log Trial End
+            //Tinylytics.AnalyticsManager.LogCustomMetric(SaveProlificID.prolificID + "_" + trialName + "_" + tempTrialNum.ToString() + "_" + "TrialEndTime", System.DateTime.Now);
 
             //Debug.Log(blinkyDists);
             UnityEngine.Debug.Log("Round Over!");
@@ -155,6 +161,8 @@ public class GameManager : MonoBehaviour
         GlobalControl.Instance.trialNum = trialNum;
         GlobalControl.Instance.trialName = trialName;
         GlobalControl.Instance.trials = trials;
+        GlobalControl.Instance.lastTimeTaken = lastTimeTaken;
+        GlobalControl.Instance.bestTimeTaken = bestTimeTaken;
     }
 
     void newTrial()
@@ -162,7 +170,6 @@ public class GameManager : MonoBehaviour
         if (trialNum < trials.Count)
         {   
             trialName = trials[trialNum];
-            
             SaveGame();
             sceneName = "InterstitialA"; //this name is used in the Coroutine, which is basically just a pause timer for 3 seconds.
             StartCoroutine(WaitForSceneLoad());

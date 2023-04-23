@@ -8,6 +8,8 @@ public class StartGame : MonoBehaviour
     public int trialNum;
     public string trialName;
     public List<string> trials = new();
+    public float lastTimeTaken;
+    public float bestTimeTaken;
 
     // Start is called before the first frame update
     void Start()
@@ -41,7 +43,10 @@ public class StartGame : MonoBehaviour
     void gameStart()
     {
         trialNum = 0; //set the trial number to the first item in the list
+        
         GlobalControl.Instance.trialNum = trialNum; //this will set the trialNum to the first in the list
+        GlobalControl.Instance.lastTimeTaken = 0f;
+        GlobalControl.Instance.bestTimeTaken = 0f;
         trialName = GlobalControl.Instance.trials[trialNum];
 
         int actualTrialNum = trialNum + 1;

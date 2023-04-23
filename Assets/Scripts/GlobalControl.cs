@@ -8,6 +8,9 @@ public class GlobalControl : MonoBehaviour
     public int trialNum;
     public string trialName;
     public List<string> trials;
+    public float lastTimeTaken;
+    public float bestTimeTaken;
+
 
 
     void Awake()
