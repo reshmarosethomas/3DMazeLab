@@ -55,23 +55,35 @@ public class Interstitial : MonoBehaviour
 
         int _trialNumberForHumans = trialNum; //This is because trialNum starts at 0 (as do all array values) but people don't start counting with zero...mostly...
         message.text = "Round " + _trialNumberForHumans + "/5";
+        
+        //Convert Last Time Taken to Readable Format
+        float seconds1 = Mathf.Floor(lastTimeTaken);
+        float minutes1 = Mathf.Floor(seconds1/60);   
+        float milliseconds1 = Mathf.Floor((lastTimeTaken - seconds1)*100);
+            seconds1 = seconds1%60; 
+        
+        //Convert BEST Time Taken to Readable Format
+        float seconds2 = Mathf.Floor(bestTimeTaken);
+        float minutes2 = Mathf.Floor(seconds2/60);   
+        float milliseconds2 = Mathf.Floor((lastTimeTaken - seconds2)*100);
+            seconds2 = seconds2%60; 
 
         if (trialNum <= 1)
         {
             heading.text = "You've completed Practice! Ready to play?";
-            lastTime.text = "Time Taken: " + lastTimeTaken.ToString();
+            lastTime.text = "Time Taken: " + minutes1.ToString() + ":" + seconds1.ToString() + ":" + milliseconds1.ToString();
             bestTime.text = "";
+
         }
-        
+
         else 
         {
             heading.text = "Can you beat your best score?";
-            lastTime.text = "Time Taken: " + lastTimeTaken.ToString();
-            bestTime.text = "Best Time: " + bestTimeTaken.ToString();
+            lastTime.text = "Time Taken: " + minutes1.ToString() + ":" + seconds1.ToString() + ":" + milliseconds1.ToString();
+            bestTime.text = "Best Time: " + minutes2.ToString() + ":" + seconds2.ToString() + ":" + milliseconds2.ToString();
+
         }
-        // else {
-        //     heading.text = "Can you beat your best score, this round?";
-        // }
+        
     }
 
     void newTrial()
