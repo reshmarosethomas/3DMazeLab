@@ -3856,6 +3856,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4145531737935914969, guid: a2e93911055704986b4ee26a064fde84, type: 3}
+      propertyPath: m_text
+      value: 'Gems Collected: 0/15'
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a2e93911055704986b4ee26a064fde84, type: 3}
 --- !u!1 &791715958

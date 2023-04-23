@@ -16,7 +16,7 @@ public class AnimatePet : MonoBehaviour
 
     float currTime = 0f; 
     float prevTime = 0f;
-    float period = 1f;
+    float period = 1.5f;
 
     bool faceFront = false;
     float degreesPerSecond = 240f;
@@ -70,7 +70,6 @@ public class AnimatePet : MonoBehaviour
 
         //CHECK DISTANCE
         distFromPlayer = Vector3.Distance (transform.position, frontWaypoint.position);
-        UnityEngine.Debug.Log(distFromPlayer);
 
 
         //CHANGE DIRECTION PET FACES & WALKS
@@ -108,8 +107,8 @@ public class AnimatePet : MonoBehaviour
 
 
         //BOBBING ANIMATION
-        if (transform.localPosition.y >= petLocalYPos + 0.03f) up = false;
-        else if (transform.localPosition.y <= petLocalYPos - 0.03f) up = true;
+        if (transform.localPosition.y >= originalPos.y + 0.05f) up = false;
+        else if (transform.localPosition.y <= originalPos.y - 0.05f) up = true;
 
         if (up)
         {
