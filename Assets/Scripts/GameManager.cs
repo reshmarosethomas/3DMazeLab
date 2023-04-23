@@ -35,6 +35,8 @@ public class GameManager : MonoBehaviour
     public Transform player;   
 
     public int inFullScreen;
+    AudioSource collectSFX;
+
 
     void Awake()
     {
@@ -56,6 +58,7 @@ public class GameManager : MonoBehaviour
 
         //player = GameObject.Find("PlayerCapsule").GetComponent<Transform>();
         gemsCollected = 0;
+        collectSFX = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -91,6 +94,7 @@ public class GameManager : MonoBehaviour
     public void updateGemCount()
     {
         gemsCollected++;
+        collectSFX.Play();
         if (trialNum == 0)
         {
             gemCount.text = "GEMS COLLECTED: " + gemsCollected.ToString() + "/" + gemGoal_Lobby.ToString();

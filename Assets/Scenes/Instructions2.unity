@@ -487,6 +487,8 @@ MonoBehaviour:
   - MazeAssisted
   - MazeAssisted
   - MazeAssisted
+  - MazeAssisted
+  - MazeAssisted
 --- !u!1 &161624175
 GameObject:
   m_ObjectHideFlags: 0
