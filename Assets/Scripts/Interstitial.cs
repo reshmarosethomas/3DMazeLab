@@ -72,7 +72,7 @@ public class Interstitial : MonoBehaviour
         {
             heading.text = "You've completed Practice! Ready to play?";
             lastTime.text = "Time Taken: " + minutes1.ToString() + "m :" + seconds1.ToString() + "s :" + milliseconds1.ToString() + "ms";
-            bestTime.text = "";
+            bestTime.text = " ";
         }
 
         else 
