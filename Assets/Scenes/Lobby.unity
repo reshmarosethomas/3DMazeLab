@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.17557901, g: 0.21967965, b: 0.30202928, a: 1}
+  m_IndirectSpecularColor: {r: 0.4404276, g: 0.48899734, b: 0.5692085, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1386,6 +1386,8 @@ MonoBehaviour:
   trialNum: 0
   trialName: 
   trials: []
+  lastTimeTaken: 0
+  bestTimeTaken: 0
   trialTimer: 0
   timeLeft: {fileID: 1555621257}
   gemCount: {fileID: 1713131195}
@@ -10685,6 +10687,14 @@ PrefabInstance:
     - target: {fileID: 3653166738469780520, guid: c90d2f9787d3e4e8298bfa0417a2a622, type: 3}
       propertyPath: m_LocalRotation.z
       value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3653166738469780527, guid: c90d2f9787d3e4e8298bfa0417a2a622, type: 3}
+      propertyPath: orthographic
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3653166738469780527, guid: c90d2f9787d3e4e8298bfa0417a2a622, type: 3}
+      propertyPath: field of view
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 5922069339346130695, guid: c90d2f9787d3e4e8298bfa0417a2a622, type: 3}
       propertyPath: m_LocalPosition.x
