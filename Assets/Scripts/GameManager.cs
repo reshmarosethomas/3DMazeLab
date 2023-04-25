@@ -127,7 +127,7 @@ public class GameManager : MonoBehaviour
             //Log all Tinylytics at Round End
 
             //1. Time Taken for Round
-            Tinylytics.AnalyticsManager.LogCustomMetric(prolificID + "_TrialCutePet_" +tempTrialName + "_" + tempTrialNum.ToString() + "_" + "TimeTaken", trialTimer.ToString());
+            Tinylytics.AnalyticsManager.LogCustomMetric(prolificID + "_TrialNeutralPet_" +tempTrialName + "_" + tempTrialNum.ToString() + "_" + "TimeTaken", trialTimer.ToString());
             lastTimeTaken = trialTimer;
             if (trialNum > 1) {
                 if (lastTimeTaken <= bestTimeTaken) bestTimeTaken = lastTimeTaken;
@@ -135,14 +135,14 @@ public class GameManager : MonoBehaviour
             
 
             //2. Log Score
-            Tinylytics.AnalyticsManager.LogCustomMetric(SaveProlificID.prolificID + "_TrialCutePet_" + tempTrialName + "_" + tempTrialNum.ToString() + "_" + "GemsCollected", gemsCollected.ToString());
+            Tinylytics.AnalyticsManager.LogCustomMetric(SaveProlificID.prolificID + "_TrialNeutralPet_" + tempTrialName + "_" + tempTrialNum.ToString() + "_" + "GemsCollected", gemsCollected.ToString());
 
             //3. Heat Map
             heatMapData = string.Join("_", positions);
-            Tinylytics.AnalyticsManager.LogCustomMetric(SaveProlificID.prolificID + "_TrialCutePet_" + tempTrialName + "_" + tempTrialNum.ToString() + "_" + "PlayerHeatMap", heatMapData);
+            Tinylytics.AnalyticsManager.LogCustomMetric(SaveProlificID.prolificID + "_TrialNeutralPet_" + tempTrialName + "_" + tempTrialNum.ToString() + "_" + "PlayerHeatMap", heatMapData);
 
             //5. ExitedFullScreen?
-            Tinylytics.AnalyticsManager.LogCustomMetric(SaveProlificID.prolificID + "_TrialCutePet_" + tempTrialName + "_" + tempTrialNum.ToString() + "_" + "InFullScreen", inFullScreen.ToString());
+            Tinylytics.AnalyticsManager.LogCustomMetric(SaveProlificID.prolificID + "_TrialNeutralPet_" + tempTrialName + "_" + tempTrialNum.ToString() + "_" + "InFullScreen", inFullScreen.ToString());
 
             //6. Log Trial End
             //Tinylytics.AnalyticsManager.LogCustomMetric(SaveProlificID.prolificID + "_" + trialName + "_" + tempTrialNum.ToString() + "_" + "TrialEndTime", System.DateTime.Now);
